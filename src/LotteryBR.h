@@ -13,6 +13,10 @@ class LotteryBR {
         /*  Constructor Method   */
         //LotteryBR();
 
+        /* Class's public Methods */
+        void game(int GameName, int QuantityNumbers);             
+
+    private:
         /* Variaveis da classe  */
         int LowerNumberPosition;
         int RandomNumber;
@@ -24,22 +28,16 @@ class LotteryBR {
         int Numbers[SampleMax];
         int LowestNumber;//*
 
-
-        /* Método da classe */
-        void game(int jogo, int QuantidadeAposta);        
-
-        void ImprimeSerial();
-        void ImprimeLCD();       
-
-    private:
-        /* Método da classe */
+        /* Class's public Methods */
         void Megasena(int quant);
         void Quina(int quant);
         void Lotofacil(int quant);
         void Lotomania(int quant); 
         void RandomNumbers();
 
-        void NumbersOrderer();
+        void NumbersOrderer();        
+        void ImprimeSerial();
+        void ImprimeLCD();  
 };
 
 #endif

@@ -2,19 +2,19 @@
 #include "Arduino.h"
 
 
-void LotteryBR::game(int GameType, int BetQuantityNumbers){
-    switch (GameType){
-      case 60: if((BetQuantityNumbers>5) && (BetQuantityNumbers<16)){
-                  Megasena(BetQuantityNumbers); break;  
+void LotteryBR::game(int GameName, int QuantityNumbers){
+    switch (GameName){
+      case 60: if((QuantityNumbers>5) && (QuantityNumbers<16)){
+                  Megasena(QuantityNumbers); break;  
                 }else{break;} 
-      case 80: if((BetQuantityNumbers>5) && (BetQuantityNumbers<16)){
-                  Quina(BetQuantityNumbers); break;  
+      case 80: if((QuantityNumbers>5) && (QuantityNumbers<16)){
+                  Quina(QuantityNumbers); break;  
                 }else{break;} 
-      case 25: if((BetQuantityNumbers>5) && (BetQuantityNumbers<20)){
-                  Lotofacil(BetQuantityNumbers); break;  
+      case 25: if((QuantityNumbers>5) && (QuantityNumbers<20)){
+                  Lotofacil(QuantityNumbers); break;  
                 }else{break;} 
-      case 99: if((BetQuantityNumbers>0) && (BetQuantityNumbers<51)){
-                  Lotomania(BetQuantityNumbers); break;  
+      case 99: if((QuantityNumbers>0) && (QuantityNumbers<51)){
+                  Lotomania(QuantityNumbers); break;  
                 }else{break;} 
       default:
           break;
@@ -24,7 +24,7 @@ void LotteryBR::game(int GameType, int BetQuantityNumbers){
 
 void LotteryBR::Megasena(int quant){
     Serial.println();
-    Serial.printf("The %d random numbers of MEGA SENA are:\n",quant);
+    Serial.printf("The %d for MEGA SENA's prize maybe:\n",quant);
     RandonMax = 60;
     quantity = quant;    
     RandomNumbers();
@@ -32,7 +32,7 @@ void LotteryBR::Megasena(int quant){
 
 void LotteryBR::Quina(int quant){
     Serial.println();
-    Serial.printf("The %d random numbers of QUINA are:\n",quant);
+    Serial.printf("The %d for QUINA's prize maybe:\n",quant);
     RandonMax = 80;
     quantity = quant;    
     RandomNumbers();
@@ -40,7 +40,7 @@ void LotteryBR::Quina(int quant){
 
 void LotteryBR::Lotofacil(int quant){
     Serial.println();
-    Serial.printf("The %d random numbers of LOTOFACIL are:\n",quant);
+    Serial.printf("The %d for LOTOFACIL's prize maybe:\n",quant);
     RandonMax = 25;
     quantity = quant;    
     RandomNumbers();
@@ -48,7 +48,7 @@ void LotteryBR::Lotofacil(int quant){
 
 void LotteryBR::Lotomania(int quant){
     Serial.println();
-    Serial.printf("The %d random numbers of LOTOMANIA are:\n",quant);  
+    Serial.printf("The %d for LOTOMANIA's prize maybe:\n",quant);  
     RandonMax = 99;
     quantity = quant;    
     RandomNumbers();
