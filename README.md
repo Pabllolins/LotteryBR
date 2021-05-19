@@ -1,26 +1,27 @@
 LotteryBR is a C/C++ library for Arduino and Espressif cores.
 
+## Short Description
+* LotteryBR
+    * This library provide in a easy way some functions and resources to generate random numbers for some games of main Brazil Lottery.
+
+    * This Library is a evolution of the code demonstrated in this [Video] (https://www.youtube.com/watch?v=gydHZAra2fs&list=PLb557oTgtg-z-dfCthfwlR7-qHsVh-vFr&index=5)
+
+
 ## Features
-
-* [JSON deserialization](https://arduinojson.org/v6/api/json/deserializejson/?utm_source=github&utm_medium=readme)
-    * [Optionally decodes UTF-16 escape sequences to UTF-8]
-
 * Portable
     * Usable on any C++ project (not limited to Arduino)
-    * Works with virtually any board
+    * Works with board like:
         * Arduino boards: [Uno]
         * Espressif chips: [ESP8266], [ESP32]
         * Texas Instruments boards: [MSP430]
     * Tested on all major development environments
-        * [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-        * [PlatformIO](http://platformio.org/)
-        * [Visual Studio](https://www.visualstudio.com/)
+        * [Arduino IDE]
+        * [PlatformIO]
+        //* [Visual Studio](https://www.visualstudio.com/)
 
 ## Quickstart
 
-### Deserialization
-
-### Serialization
+### Examples
 
 ## Support the project
 
