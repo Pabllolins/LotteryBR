@@ -23,7 +23,8 @@ class LotteryBR {
         int index = 0;
         int counter = 0;
         int RandonMax;
-        int RandonMin;
+        int BetMin;
+        int BetMax;
 
         int quantity = 5;
         int Numbers[SampleMax];
