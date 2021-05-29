@@ -31,38 +31,59 @@ void LotteryBR::Megasena(int quant){
   if((quantity <= BetMax) && (quantity >= BetMin)){
     Serial.printf("The %d numbers for MEGA SENA's prize maybe:\n",quant);    
     RandomNumbers();
-  }else{
+  }
+  else{
+    Serial.printf("ERROR: Invalid quantity!");
     delay(100);
-    Serial.println();
-    Serial.println("ERROR: Invalid quantity!");
   }
 }
 
 void LotteryBR::Quina(int quant){
-    Serial.println();
-    Serial.printf("The %d numbers for QUINA's prize maybe:\n",quant);
-    RandonMax = 80;
-    BetMin = 5;
-    quantity = quant;    
+  RandonMax = 80;
+  BetMin = 5;
+  BetMax = 15;
+  quantity = quant;    
+
+  if((quantity <= BetMax) && (quantity >= BetMin)){
+    Serial.printf("The %d numbers for QUINA's prize maybe:\n",quant);    
     RandomNumbers();
+  }
+  else{
+    Serial.printf("ERROR: Invalid quantity!");
+    delay(100);
+  }
 }
 
 void LotteryBR::Lotofacil(int quant){
-    Serial.println();
-    Serial.printf("The %d numbers for LOTOFACIL's prize maybe:\n",quant);
-    RandonMax = 25;
-    BetMin = 15;
-    quantity = quant;    
+  RandonMax = 25;
+  BetMin = 15;
+  BetMax = 20;
+  quantity = quant;    
+  
+  if((quantity <= BetMax) && (quantity >= BetMin)){
+    Serial.printf("The %d numbers for LOTOFACIL's prize maybe:\n",quant);   
     RandomNumbers();
+  }
+  else{
+    Serial.printf("ERROR: Invalid quantity!");
+    delay(100);
+  }
 }
 
-void LotteryBR::Lotomania(int quant){
-    Serial.println();
-    Serial.printf("The %d numbers for LOTOMANIA's prize maybe:\n",quant);  
-    RandonMax = 99;
-    BetMin = 1;
-    quantity = quant;    
+void LotteryBR::Lotomania(int quant){  
+  RandonMax = 99;
+  BetMin = 1;
+  BetMax = 50;
+  quantity = quant;    
+  
+  if((quantity <= BetMax) && (quantity >= BetMin)){
+    Serial.printf("The %d numbers for LOTOMANIA's prize maybe:\n",quant);   
     RandomNumbers();
+  }
+  else{
+    Serial.printf("ERROR: Invalid quantity!");
+    delay(100);
+  }
 }
 
 
