@@ -10,7 +10,7 @@ void LotteryBR::game(int GameName, int QuantityNumbers){
       case 80: if((QuantityNumbers>5) && (QuantityNumbers<16)){
                   Quina(QuantityNumbers); break;  
                 }else{break;} 
-      case 25: if((QuantityNumbers>5) && (QuantityNumbers<20)){
+      case 25: if((QuantityNumbers>14) && (QuantityNumbers<21)){
                   Lotofacil(QuantityNumbers); break;  
                 }else{break;} 
       case 99: if((QuantityNumbers>0) && (QuantityNumbers<51)){
