@@ -7,6 +7,8 @@
 #define QUINA 80
 #define SampleMax 50
 
+#define BaudRateValue 9600
+
 
 class LotteryBR {
     public:
@@ -14,7 +16,13 @@ class LotteryBR {
         //LotteryBR();
 
         /* Class's public Methods */
-        void game(int GameName, int QuantityNumbers);             
+        void game(int GameName, int QuantityNumbers);
+        char GameInputOption(); 
+        int NumberQuantity();
+        void InitialPresentation();
+        char ReceivedChar;
+        char MenuOption; 
+     
 
     private:
         /* Variaveis da classe  */

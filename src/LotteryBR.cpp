@@ -31,9 +31,10 @@ void LotteryBR::Megasena(int quant){
   if((quantity <= BetMax) && (quantity >= BetMin)){
     Serial.printf("The %d numbers for MEGA SENA's prize maybe:\n",quant);    
     RandomNumbers();
-  }
-  else{
-    Serial.printf("ERROR: Invalid quantity!");
+  }else if((quantity > BetMax) || (quantity < BetMin)){
+    delay(100);
+    Serial.println();
+    Serial.println("ERROR: Invalid quantity!");
     delay(100);
   }
 }
@@ -47,9 +48,10 @@ void LotteryBR::Quina(int quant){
   if((quantity <= BetMax) && (quantity >= BetMin)){
     Serial.printf("The %d numbers for QUINA's prize maybe:\n",quant);    
     RandomNumbers();
-  }
-  else{
-    Serial.printf("ERROR: Invalid quantity!");
+  }else if((quantity > BetMax) || (quantity < BetMin)){
+    delay(100);
+    Serial.println();
+    Serial.println("ERROR: Invalid quantity!");
     delay(100);
   }
 }
@@ -63,9 +65,10 @@ void LotteryBR::Lotofacil(int quant){
   if((quantity <= BetMax) && (quantity >= BetMin)){
     Serial.printf("The %d numbers for LOTOFACIL's prize maybe:\n",quant);   
     RandomNumbers();
-  }
-  else{
-    Serial.printf("ERROR: Invalid quantity!");
+  }else if((quantity > BetMax) || (quantity < BetMin)){
+    delay(100);
+    Serial.println();
+    Serial.println("ERROR: Invalid quantity!");
     delay(100);
   }
 }
@@ -79,9 +82,10 @@ void LotteryBR::Lotomania(int quant){
   if((quantity <= BetMax) && (quantity >= BetMin)){
     Serial.printf("The %d numbers for LOTOMANIA's prize maybe:\n",quant);   
     RandomNumbers();
-  }
-  else{
-    Serial.printf("ERROR: Invalid quantity!");
+  }else if((quantity > BetMax) || (quantity < BetMin)){
+    delay(100);
+    Serial.println();
+    Serial.println("ERROR: Invalid quantity!");
     delay(100);
   }
 }
@@ -201,4 +205,83 @@ void LotteryBR::ImprimeSerial(){
     Serial.print(" ");
   }
   Serial.println();
+}
+
+
+
+void LotteryBR:: InitialPresentation(){
+  Serial.println();
+  Serial.println(" ______________________________________________________");
+  Serial.println("|___________BRAZIL_LOTTERY_NUMBERS_GENERATOR___________|");    
+  Serial.println("|Press the game letter(keyboard), and after press enter|");
+  Serial.println("|                                                      |");
+  Serial.println("| C --> Lotofacil                                      |");
+  Serial.println("| E --> MegaSena                                       |");                     
+  Serial.println("| D --> Quina                                          |");
+  Serial.println("| B --> Lotomania                                      |");
+  Serial.println("|______________________________________________________|");
+  Serial.println();
+  delay(500);
+}
+
+
+
+
+
+//________________
+char LotteryBR:: GameInputOption(){
+  if(Serial.available() == false){
+    Serial.begin(BaudRateValue);
+    //Serial.updateBaudRate(BaudRateValue);
+  }
+
+  ReceivedChar = Serial.read();    
+  delay(1000);
+
+  while (ReceivedChar == '\r'){
+    ReceivedChar = Serial.read(); 
+  }
+
+  while (ReceivedChar != '\r'){  
+    if(ReceivedChar == 'D'){ MenuOption = 'D'; break;}
+    else if(ReceivedChar == 'C'){ MenuOption = 'C'; break;}
+    else if(ReceivedChar == 'B'){ MenuOption = 'B'; break;}
+    else if(ReceivedChar == 'E'){ MenuOption = 'E'; break;}
+    else { MenuOption = ' '; break; }
+    delay(50);
+  }
+
+  if(MenuOption == ' '){ GameInputOption(); }
+  
+  return MenuOption;
+}
+
+
+int LotteryBR:: NumberQuantity(){ 
+  String MountedText;
+  int IntVar;
+  Serial.print("Digite a quantidade desejada, ESPAÇO, depois ENTER: ");
+  
+  ReceivedChar = '\r';
+
+  while (ReceivedChar == '\r'){    
+    ReceivedChar = Serial.read();
+    delay(5);
+
+    if (ReceivedChar == '0' || ReceivedChar == '1' || ReceivedChar == '2' || ReceivedChar == '3' || ReceivedChar == '4' || ReceivedChar == '5' || ReceivedChar == '6' || ReceivedChar == '7' || ReceivedChar == '8' || ReceivedChar == '9' ){                
+      MountedText += ReceivedChar;
+      ReceivedChar = '\r';               
+    }
+    else if(ReceivedChar == ' '){        
+            break;
+          }
+          else{
+            ReceivedChar = '\r'; 
+          }
+  }
+
+  IntVar = (int)atoi(MountedText.c_str());
+  MountedText = "";
+
+  return IntVar;
 }
