@@ -1,5 +1,6 @@
 #include "LotteryBR.h"
 #include "Arduino.h"
+//#include "Esp.h"
 
 
 void LotteryBR::game(int GameName, int QuantityNumbers){
@@ -210,6 +211,7 @@ void LotteryBR::ImprimeSerial(){
 
 
 void LotteryBR:: InitialPresentation(){
+  count = 0;
   Serial.println();
   Serial.println(" ______________________________________________________");
   Serial.println("|___________BRAZIL_LOTTERY_NUMBERS_GENERATOR___________|");    
@@ -221,7 +223,7 @@ void LotteryBR:: InitialPresentation(){
   Serial.println("| B --> Lotomania                                      |");
   Serial.println("|______________________________________________________|");
   Serial.println();
-  delay(500);
+  delay(200);
 }
 
 
@@ -230,30 +232,33 @@ void LotteryBR:: InitialPresentation(){
 
 //________________
 char LotteryBR:: GameInputOption(){
+  if(count == 100){
+    Serial.println("Entrando em deepsleep");
+    ESP.deepSleep(5000);
+  }
   if(Serial.available() == false){
     Serial.begin(BaudRateValue);
     //Serial.updateBaudRate(BaudRateValue);
   }
 
   ReceivedChar = Serial.read();    
-  delay(1000);
-
-  while (ReceivedChar == '\r'){
-    ReceivedChar = Serial.read(); 
-  }
+  delay(500);
 
   while (ReceivedChar != '\r'){  
     if(ReceivedChar == 'D'){ MenuOption = 'D'; break;}
     else if(ReceivedChar == 'C'){ MenuOption = 'C'; break;}
     else if(ReceivedChar == 'B'){ MenuOption = 'B'; break;}
     else if(ReceivedChar == 'E'){ MenuOption = 'E'; break;}
-    else { MenuOption = ' '; break; }
+    else {ReceivedChar = '\r'; MenuOption = ' '; break; }
     delay(50);
   }
 
-  if(MenuOption == ' '){ GameInputOption(); }
-  
-  return MenuOption;
+  if(MenuOption == ' '){ 
+    GameInputOption(); 
+  }else if(MenuOption != ' '){
+      return MenuOption;
+  }
+  count++;
 }
 
 

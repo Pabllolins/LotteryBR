@@ -33,6 +33,7 @@ class LotteryBR {
         int RandonMax;
         int BetMin;
         int BetMax;
+        int count = 0;
 
         int quantity = 5;
         int Numbers[SampleMax];
